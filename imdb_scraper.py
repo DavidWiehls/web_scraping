@@ -16,6 +16,7 @@ csv_writer.writerow([   'movie_name',
                                                 ])
 
 
+# for x in range(1,9952):
 #Get the URL
 url_list = requests.get('https://www.imdb.com/search/title/?title_type=tv_series,tv_miniseries&genres=action&start=1&explore=genres&ref_=adv_nxt').text
 soup1= BeautifulSoup(url_list, 'lxml')
@@ -108,3 +109,5 @@ for movie_item in soup1.find_all('div', class_='lister-item mode-advanced'):
         print('ERROR in ' + str(movie_name))
         pass
     print(movie_name+' is done')
+
+csv_file.close()
