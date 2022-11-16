@@ -7,7 +7,7 @@ csv_file = open('cms_scrape_test.csv', 'w', newline='')
 csv_writer = csv.writer(csv_file)
 csv_writer.writerow([   'movie_name',
                         'movie_name_original',
-                        # 'movie_genres',
+                        'movie_genres',
                         'movie_release',
                         'movie_cover_link_HQ',
                         'movie_cover_link_LQ',
@@ -17,7 +17,7 @@ csv_writer.writerow([   'movie_name',
 
 
 #Get the URL
-url_list = requests.get('https://www.imdb.com/search/title/?title_type=tv_series,tv_miniseries&genres=action&start=1&explore=genres&ref_=adv_nxt').text
+url_list = requests.get('https://www.imdb.com/search/title/?title_type=tv_series,tv_miniseries&genres=action&start=101&explore=genres&ref_=adv_nxt').text
 soup1= BeautifulSoup(url_list, 'lxml')
 
 #Create the Movie List HTML
@@ -28,7 +28,7 @@ movie_link = movie_item.find(class_='lister-item-image float-left').a['href']
 url_movie = requests.get('https://www.imdb.com'+str(movie_link)).text
 
 #Find the Genres of the Movie
-movie_genres = movie_item.find('span', class_='genre').text
+movie_genres = movie_item.find('span', class_='genre').text.split('\n')[1].rstrip()
 
 #Create Soup for the Movie Page
 soup2 = BeautifulSoup(url_movie, 'lxml')
@@ -38,7 +38,7 @@ movie_name = soup2.find('h1', attrs={'data-testid': 'hero-title-block__title'}).
 
 #Find the Original Name
 try:
-    movie_name_original = soup2.find('div', attrs={'data-testid': 'hero-title-block__original-title'}).text
+    movie_name_original = soup2.find('div', attrs={'data-testid': 'hero-title-block__original-title'}).text.strip('Originaltitle: ')
 except Exception as e:
     movie_name_original = movie_name
     pass
@@ -55,6 +55,9 @@ movie_cover_link_LQ= soup3.find('img')['srcset'].split(' ')[0]
 
 # #Find the Picture Reference Link and then Find the Picture Link in HQ and LQ 
 # # Find All needed
+
+
+
 # for x in range(1,13):
 #     csv_file = open('cms_scrape_pictures.csv', 'w', newline='')
 #     csv_writer = csv.writer(csv_file)
@@ -78,31 +81,30 @@ movie_presentation = soup2.find('span', attrs={'data-testid': 'plot-xl'}).text
 # movie_presentation = movie_item.find(class_='text-muted').find_next(class_='text-muted').find_next(class_='text-muted').text
 
 # Find the main artists in the movie
-# movie_stars = movie_item.find(class_='text-muted').find_next(class_='text-muted').find_next(class_='text-muted').find_next().text
-# print(movie_stars)
+movie_stars_row = movie_item.find(class_='text-muted').find_next(class_='text-muted').find_next(class_='text-muted').find_next().text
+movie_stars_list = movie_stars_row.split(':')[1].split('\n')
+movie_stars = "".join(movie_stars_list)
 
 
-# print('https://www.imdb.com'+str(movie_link))
-# print(movie_name)
-# print(movie_name_original)
-# print(movie_genres)
-# print(movie_release)
-# print(movie_cover_link_HQ)
-# print(movie_cover_link_LQ)
-# print(movie_picture_link_HQ)
-# print(movie_picture_link_LQ)
-# print(movie_presentation) 
-# print(movie_stars)
+print('https://www.imdb.com'+str(movie_link))
+print(movie_name)
+print(movie_name_original)
+print(movie_genres)
+print(movie_release)
+print(movie_cover_link_HQ)
+print(movie_cover_link_LQ)
+print(movie_presentation) 
+print(movie_stars)
 
 try:
     csv_writer.writerow([   movie_name,
                             movie_name_original,
-                            # movie_genres,
+                            movie_genres,
                             movie_release,
                             movie_cover_link_HQ,
                             movie_cover_link_LQ,
                             movie_presentation,
-                            # movie_stars
+                            movie_stars
                                                     ])
 except Exception as e:
     print('ERROR in ' + str(movie_name))

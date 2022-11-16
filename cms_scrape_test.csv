@@ -1,9 +1,2 @@
-movie_name,movie_name_original,movie_release,movie_cover_link_HQ,movie_cover_link_LQ,movie_presentation,movie_stars
-Andor,Andor,2022– ,https://m.media-amazon.com/images/M/MV5BYzFjN2JlMWMtMmU0ZC00ZjQ3LWJlZmYtMDg3YWFkN2MxYWZkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_.jpg,https://m.media-amazon.com/images/M/MV5BYzFjN2JlMWMtMmU0ZC00ZjQ3LWJlZmYtMDg3YWFkN2MxYWZkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_FMjpg_UY473_.jpg,"Prequel series to Star Wars' 'Rogue One'. In an era filled with danger, deception and intrigue, Cassian will embark on the path that is destined to turn him into a Rebel hero.","
-            
-    Stars:
-Diego Luna, 
-Stellan Skarsgård, 
-Genevieve O'Reilly, 
-Kyle Soller
-"
+movie_name,movie_name_original,movie_genres,movie_release,movie_cover_link_HQ,movie_cover_link_LQ,movie_presentation,movie_stars
+Star Trek: Raumschiff Voyager,Star Trek: Voy,"Action, Adventure, Sci-Fi",1995–2001,https://m.media-amazon.com/images/M/MV5BYWIwMTI4NzctZmNjZi00OGU2LThhMGItZDI0ODAwOWI1NTFlXkEyXkFqcGdeQXVyNTE1NjY5Mg@@._V1_.jpg,https://m.media-amazon.com/images/M/MV5BYWIwMTI4NzctZmNjZi00OGU2LThhMGItZDI0ODAwOWI1NTFlXkEyXkFqcGdeQXVyNTE1NjY5Mg@@._V1_FMjpg_UY452_.jpg,"Pulled to the far side of the galaxy, where the Federation is seventy-five years away at maximum warp speed, a Starfleet ship must cooperate with Maquis rebels to find a way home.","Kate Mulgrew, Robert Beltran, Roxann Dawson, Robert Duncan McNeill"
