@@ -58,8 +58,6 @@ for x in range(1,13):
     soup4 = BeautifulSoup(requests.get('https://www.imdb.com'+movie_pictures_ref).text, 'lxml')
     movie_picture_link_HQ[x-1] = soup4.find('img')['src']
     movie_picture_link_LQ[x-1]= soup4.find('img')['srcset'].split(' ')[0]
-    print(movie_picture_link_HQ[x-1])
-    print(movie_picture_link_LQ[x-1])
 try:
     csv_writer.writerow([   movie_picture_link_HQ[0],
                             movie_picture_link_HQ[1],
